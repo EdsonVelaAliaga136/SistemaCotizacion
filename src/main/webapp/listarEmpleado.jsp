@@ -6,29 +6,24 @@
         out.print(mensaje);
     }
 %>
-<div id="colorlib-page">
-    <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-    <aside id="colorlib-aside" role="complementary" class="js-fullheight">
-        <nav id="colorlib-main-menu" role="navigation">
-            <ul>
-                <li class="colorlib-active"><a href="index.jsp">Home</a></li>
-                <li><a href="listarEmpleado.jsp">Listar Empleado</a></li>
-                <li><a href="registrarEmpleado.jsp">Registrar Empleado</a></li>
-                <li><a href="buscarEmpleado.jsp">Buscar Empleado</a></li>
-            </ul>
-        </nav>
-    </aside> <!-- END COLORLIB-ASIDE -->
 
-    <div id="colorlib-main">
-        <section class="ftco-section pt-4 mb-5 ftco-intro">
-            <div class="container-fluid px-3 px-md-0">
-                <div class="row">
-                    <div class="col-md-12 mb-4">
-                        <h1 class="h2">Mano de obra</h1>
-
+<!-- Dashboard Counts Section-->
+<section class="dashboard-counts no-padding-bottom">
+    <div class="container-fluid">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-close">
+                    <div class="dropdown">
+                        <button type="button" id="closeCard3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard3" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
                     </div>
-                    <div class="col-md-6">
-                        <table class="table">
+                </div>
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="h4">Mano de obra</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">                       
+                        <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>Descripcion</th>
@@ -43,12 +38,7 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </div><!-- END COLORLIB-MAIN -->
-</div><!-- END COLORLIB-PAGE -->
-
+        </div>
+    </div>
 </section>
-
-
-
 <%@include file="footer.jsp" %>

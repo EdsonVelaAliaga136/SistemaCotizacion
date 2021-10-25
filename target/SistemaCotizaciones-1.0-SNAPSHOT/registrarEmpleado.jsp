@@ -8,65 +8,52 @@
         response.sendRedirect("listarEmpleado.jsp");
     }
 %>
-<div id="colorlib-page">
-    <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-    <aside id="colorlib-aside" role="complementary" class="js-fullheight">
-        <nav id="colorlib-main-menu" role="navigation">
-            <ul>
-                <li class="colorlib-active"><a href="index.jsp">Home</a></li>
-                <li><a href="listarEmpleado.jsp">Listar Empleado</a></li>
-                <li><a href="registrarEmpleado.jsp">Registrar Empleado</a></li>
-                <li><a href="buscarEmpleado.jsp">Buscar Empleado</a></li>
-            </ul>
-        </nav>
-    </aside> <!-- END COLORLIB-ASIDE -->
 
-    <div id="colorlib-main">
-        <section class="ftco-section pt-4 mb-5 ftco-intro">
-            <div class="container-fluid px-3 px-md-0">
-                <div class="row">
-                    <div class="col-md-12 mb-4">
-                        <h1 class="h2">Registrar Empleado</h1>
-
-                    </div>
-                    <div class="col-md-6">
-                        <form method="POST">
-                            <center>
-                                <div class="form-group row">
-                                    <label  class="col-sm-4 col-form-label">Descripcion:</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="desc" placeholder="Cargo Empleado"  value="">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Unidad de medida: </label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control"  placeholder="HR" name="uniMed"  value="">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label  class="col-sm-4 col-form-label">Precio productivo : </label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" placeholder="0.00 Bs" name="preProd" value="">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-sm-10">
-                                        <input class="btn btn-info " type="submit" value="REGISTRAR" name="registrar" />
-                                    </div>
-                                </div>
-                            </center>
-                        </form>
+<!-- Dashboard Counts Section-->
+<section class="dashboard-counts no-padding-bottom">
+    <div class="container-fluid">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-close">
+                    <div class="dropdown">
+                        <button type="button" id="closeCard2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard2" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
                     </div>
                 </div>
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="h4">Registrar Empleado</h3>
+                </div>
+                <div class="card-body">
+
+                    <form class="form-horizontal" method="POST">
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Descripcion:</label>
+                            <div class="col-sm-9">
+                                <input id="inputHorizontalSuccess" type="text"  name="desc" placeholder="Cargo Empleado" class="form-control form-control-success">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Unidad de medida:</label>
+                            <div class="col-sm-9">
+                                <input id="inputHorizontalWarning" type="text" placeholder="HR" name="uniMed"  class="form-control form-control-warning">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 form-control-label">Precio productivo :</label>
+                            <div class="col-sm-9">
+                                <input id="inputHorizontalWarning" type="text" placeholder="0.00 Bs" name="preProd" class="form-control form-control-warning">
+                            </div>
+                        </div>
+                        <div class="form-group row">       
+                            <div class="col-sm-9 offset-sm-3">
+                                <input type="submit" value="REGISTRAR" name="registrar" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </section>
-    </div><!-- END COLORLIB-MAIN -->
-</div><!-- END COLORLIB-PAGE -->
-
+        </div>      
+    </div>
 </section>
-
-
 
 <%@include file="footer.jsp" %>

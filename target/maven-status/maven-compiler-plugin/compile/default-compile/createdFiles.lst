@@ -1,2 +1,14 @@
 com\mycompany\sistemacotizaciones\bean\EmpleadoBean.class
+com\mycompany\sistemacotizaciones\clases\Proyecto.class
 com\mycompany\sistemacotizaciones\conexion\VariableConexion.class
+com\mycompany\sistemacotizaciones\bean\ItemBean.class
+com\mycompany\sistemacotizaciones\bean\ProyectoBean.class
+com\mycompany\sistemacotizaciones\clases\Herramienta.class
+com\mycompany\sistemacotizaciones\clases\Actividad.class
+com\mycompany\sistemacotizaciones\clases\Material.class
+com\mycompany\sistemacotizaciones\bean\ActividadMaterialBean.class
+com\mycompany\sistemacotizaciones\clases\Item.class
+com\mycompany\sistemacotizaciones\clases\Personal.class
+com\mycompany\sistemacotizaciones\bean\MaterialBean.class
+com\mycompany\sistemacotizaciones\clases\ActividadMaterial.class
+com\mycompany\sistemacotizaciones\bean\ActividadBean.class

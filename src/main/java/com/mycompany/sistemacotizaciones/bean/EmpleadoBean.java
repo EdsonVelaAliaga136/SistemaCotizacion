@@ -45,8 +45,8 @@ public class EmpleadoBean {
         if (this.conection != null) {
             try {
                 StringBuilder query = new StringBuilder();
-                query.append(" INSERT INTO empleado ");
-                query.append(" VALUES (nextval('sec_emp'),?,?,?)");
+                query.append(" INSERT INTO personal ");
+                query.append(" VALUES (nextval('sec_per'),?,?,?)");
 
                 if (ps == null) {
                     ps = conection.prepareStatement(query.toString());
@@ -78,8 +78,8 @@ public class EmpleadoBean {
     public  String listarEmpleado() {
         StringBuilder salidaTabla = new StringBuilder();
         StringBuilder query = new StringBuilder();
-        query.append(" SELECT  e.des_emp, e.uni_med_emp, e.prec_prod_emp ");
-        query.append(" FROM empleado  e ");
+        query.append(" SELECT  e.des_per, e.uni_med_per, e.prec_prod_per ");
+        query.append(" FROM personal  e ");
         try {
             ps = this.conection.prepareStatement(query.toString());
             rs = ps.executeQuery();
@@ -108,8 +108,8 @@ public class EmpleadoBean {
     public String buscarEmpleado(String emp) {
          StringBuilder salidaTabla = new StringBuilder();
         StringBuilder query = new StringBuilder();
-        query.append(" SELECT  e.des_emp, e.uni_med_emp, e.prec_prod_emp ");
-        query.append(" FROM empleado  e ");
+        query.append(" SELECT  e.des_per, e.uni_med_per, e.prec_prod_per ");
+        query.append(" FROM persona  e ");
         query.append(" WHERE e.des_emp = ? ");
         try {
             ps = this.conection.prepareStatement(query.toString());
@@ -140,8 +140,8 @@ public class EmpleadoBean {
     public String listarProductoSelect(){
         StringBuilder salidaTabla=new StringBuilder();
         StringBuilder query= new StringBuilder();
-        query.append(" SELECT e.des_emp ");
-        query.append(" FROM empleado e ");
+        query.append(" SELECT e.des_per ");
+        query.append(" FROM personal e ");
         try{
             ps=conection.prepareStatement(query.toString());
             rs=ps.executeQuery();

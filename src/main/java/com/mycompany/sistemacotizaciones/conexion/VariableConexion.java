@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class VariableConexion {
 
-    public static String URL_BBDD = "jdbc:postgresql://localhost:5433/BD_Sis_Cot";
+    public static String URL_BBDD = "jdbc:postgresql://localhost:5433/BD_Sis_Cot_V2";
     public static String DRIVER_BBDD = "org.postgresql.Driver";
     public static String USER_BBDD = "postgres";
     public static String PASSWORD_BBDD = "Reinatanaka#1234";
