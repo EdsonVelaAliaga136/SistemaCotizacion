@@ -118,11 +118,10 @@
                                 <li><a href="listaMaterial.jsp">Listar Material</a></li>
                             </ul>
                         </li>
-                        <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
+                        <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Reportes </a>
                             <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
+                                <li><a href="reporteEmpleado">Reporte Empleado</a></li>
+                                <li><a href="reporteCotizaacion">Reporte Cotizacion</a></li>
                             </ul>
                         </li>
                         <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page </a></li>

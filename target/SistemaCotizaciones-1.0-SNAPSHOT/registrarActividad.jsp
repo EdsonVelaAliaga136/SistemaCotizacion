@@ -15,6 +15,7 @@
     List<Actividad> lista;
     Actividad actividadItem;
     Item itemC;
+    Long codCotFac=0L;
 %>
 <%
     String idIte = request.getParameter("idItem");

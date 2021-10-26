@@ -187,7 +187,8 @@
                         Material materialAct;
                         Actividad actividadC;
                         String idAct;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         %>
+                        Long codCotFac=0L;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        %>
                     <%
                         System.out.println("llega 1");
 
@@ -237,13 +238,13 @@
                                 session.setAttribute("listaMaterial", listaTemporal);
                             }
                             if (request.getParameter("registrarMaterialesActividad") != null) {
-                                
+
                                 // recupernado objeto de session
                                 List<Material> lista = (List<Material>) session.getAttribute("listaMaterial");
                                 String cantidad, precio;
                                 System.out.println(lista.size());
                                 for (Material materia : lista) {
-                                    
+
                                     //rescatando los datos de cantidad y precio calculado del producto
                                     cantidad = request.getParameter("cant" + materia.getId_mat());
                                     precio = request.getParameter("pre" + materia.getId_mat());
@@ -255,7 +256,7 @@
                                             materia.setCostoTotal(Float.parseFloat(precio));
                                             System.out.println("Materia: " + materia.getId_mat());
                                             String idActividadA = session.getAttribute("idActividadActual").toString();
-                                            System.out.println("idAct:"+idActividadA);
+                                            System.out.println("idAct:" + idActividadA);
                                             String idMaterialA = materia.getId_mat() + "";
                                             String cantidadMaterialA = materia.getCantidad() + "";
                                             System.out.println("idA: " + idActividadA);
@@ -267,7 +268,7 @@
 
                                             a = actividad.buscarActividad(idActividadA);
                                             System.out.println("idItem: " + a.getIdItem() + "");
-                                            
+
                                             //response.sendRedirect("registrarActividad.jsp?idItem=" + a.getIdItem() + "");
                                         } catch (NumberFormatException e) {
                                             e.printStackTrace();
@@ -286,6 +287,8 @@
                                 }
                                 //lista = (List<Material>) session.getAttribute("listaMaterial");
                                 //lista.clear(); // actualizando lista de la sesion
+                                codCotFac=Long.parseLong(proyecto.obtenerUltimoProyecto()); 
+                                System.out.println("----"+codCotFac);
                                 session.setAttribute("listaMaterial", lista);
                             }
 
@@ -295,6 +298,16 @@
                                 System.out.println("Material registrado: " + ms);
                                 //request.setAttribute("registrarMat", null);
                                 System.out.println("Material : registrando");
+                            }
+                            if (request.getParameter("guardar") != null) {
+                                String nit = request.getParameter("nit");
+                                String nombreTitular = request.getParameter("nombreTitular");
+                                /*
+                                List<ProductoCompra> listaProductos = (List<ProductoCompra>) session.getAttribute("listaProductos");
+                                codVentaFac = ventaBean.registrarCompra(listaProductos, nit, nombreTitular, 1L);
+                                System.out.println("ID venta JSP: " + codVentaFac);
+                                btnAgregar = "enabled";*/
+                                
                             }
 
                         } else {
@@ -346,7 +359,7 @@
                                                 <div class="form-group">                                
                                                     <input id="inlineFormInput" type="text" style="width: 620px"  name="nomItem" placeholder="DESCRIPCION" class="mr-3 form-control" value="<%=actividadC.getNombreAct()%>" readonly/>
                                                 </div>
-                                                
+
                                                 <div class="form-group">
                                                     <input id="inlineFormInputGroup" type="text" style="width: 150px"  placeholder="COD-PROY000" name="codProy" class="mr-3 form-control" value="<%=actividadC.getIdItem()%>"  readonly/>
                                                 </div>
@@ -520,6 +533,33 @@
                                         </div>
                                     </div>
                                 </div>
+                            </form>
+                            <br>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Datos de Cliente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Nombre del Titular: </td>
+                                        <td><input class="form-control" type="text" name="nombreTitular" id="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIT: </td>
+                                        <td><input class="form-control" type="text" name="nit" id="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="form-control btn-primary"  type="submit" value="Guardar" id="" name="guardar" />   </td>
+                                        <td><input class="form-control btn-primary"  type="reset" value="Limpiar" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <form method="POST" action="reporteCotizacion" >
+                                <input type="hidden" name="codCot" value="<%=codCotFac%>"/>
+                                <input class="btn btn-primary" type="submit" value="Cotizacion" id="generar" name="generar">
                             </form>
                         </div>
                     </section>

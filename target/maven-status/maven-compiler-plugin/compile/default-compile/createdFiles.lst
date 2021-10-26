@@ -1,9 +1,11 @@
+com\mycompany\sistemacotizaciones\servlet\ReporteEmpleado.class
 com\mycompany\sistemacotizaciones\bean\EmpleadoBean.class
 com\mycompany\sistemacotizaciones\clases\Proyecto.class
 com\mycompany\sistemacotizaciones\conexion\VariableConexion.class
 com\mycompany\sistemacotizaciones\bean\ItemBean.class
 com\mycompany\sistemacotizaciones\bean\ProyectoBean.class
 com\mycompany\sistemacotizaciones\clases\Herramienta.class
+com\mycompany\sistemacotizaciones\servlet\ReporteCotizacion.class
 com\mycompany\sistemacotizaciones\clases\Actividad.class
 com\mycompany\sistemacotizaciones\clases\Material.class
 com\mycompany\sistemacotizaciones\bean\ActividadMaterialBean.class
