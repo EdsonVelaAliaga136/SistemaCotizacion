@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.sistemacotizaciones.clases.Recursos"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,12 +23,30 @@
         <!-- Custom stylesheet - for your changes-->
         <link rel="stylesheet" href="css/custom.css">
         <!-- Favicon-->
-        <link rel="shortcut icon" href="img/favicon.ico">
         <!-- Tweaks for older IEs--><!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+        <%!
+            //definiendo un objeto para recibir la lista de recursos
+            List<Recursos> listaRecursos = new ArrayList<Recursos>();
+            //List<Recursos> listaRecursos = new ArrayList<>()
+        %>
     </head>
     <body>
+        <jsp:useBean id="rolRecursoBean" scope="session" class="com.mycompany.sistemacotizaciones.bean.RolRecursoBean"/>
+        <%
+            String usuario = request.getUserPrincipal().getName();
+            String rol = null;
+            if (request.isUserInRole("ADMINISTRADOR")) {
+                rol = "ADMINISTRADOR";
+            }
+            if (request.isUserInRole("CAJERO")) {
+                rol = "CAJERO";
+            }
+            if (request.isUserInRole("ALMACEN")) {
+                rol = "ALMACEN";
+            }
+        %>
         <div class="page">
             <!-- Main Navbar-->
             <header class="header">
@@ -47,37 +68,16 @@
                                 <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
                             </div>
                             <!-- Navbar Menu -->
-                            <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-                                <!-- Search-->
-                                <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>
-                                <!-- Notifications-->
-                                <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell-o"></i><span class="badge bg-red badge-corner">12</span></a>
-                                    <ul aria-labelledby="notifications" class="dropdown-menu">
-                                        <li><a rel="nofollow" href="#" class="dropdown-item"> 
-                                                <div class="notification">
-                                                    <div class="notification-content"><i class="fa fa-envelope bg-green"></i>You have 6 new messages </div>
-                                                    <div class="notification-time"><small>4 minutes ago</small></div>
-                                                </div></a></li>                    
-                                    </ul>
-                                </li>
-                                <!-- Messages                        -->
-                                <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope-o"></i><span class="badge bg-orange badge-corner">10</span></a>
-                                    <ul aria-labelledby="notifications" class="dropdown-menu">
-                                        <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                                                <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                                                <div class="msg-body">
-                                                    <h3 class="h5">Jason Doe</h3><span>Sent You Message</span>
-                                                </div></a></li>                    
-                                    </ul>
-                                </li>                
+                            <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">                                          
                                 <!-- Logout    -->
-                                <li class="nav-item"><a href="login.html" class="nav-link logout"> <span class="d-none d-sm-inline">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                                <li class="nav-item"><a href="<%= request.getContextPath() + "/logout"%>" class="nav-link logout"> <span class="d-none d-sm-inline">Logout</span><i class="fa fa-sign-out"></i></a></li>
                             </ul>
                         </div>
                     </div>
                 </nav>
 
             </header>
+
             <div class="page-content d-flex align-items-stretch"> 
                 <!-- Side Navbar -->
                 <nav class="side-navbar">
@@ -85,24 +85,36 @@
                     <div class="sidebar-header d-flex align-items-center">
                         <div class="avatar"><img src="img/avatar-11.jpg" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="title">
-                            <h1 class="h4">Mark Stephen</h1>
-                            <p>Web Designer</p>
+                            <h1 class="h4"><%=usuario%></h1>
+                            <p><%= rol%></p>
                         </div>
                     </div>
                     <!-- Sidebar Navidation Menus--><span class="heading">Menu</span>
-                    <ul class="list-unstyled">
+                    <%
+                        //LLAMANDO AL METODO PARA OBTENER LOS RECURSOS
+                        listaRecursos = rolRecursoBean.listaRecursos(rol);
+                        String path = request.getContextPath();
+                        if (rolRecursoBean != null) {
+                            out.print("<ul class='list-unstyled'>");
+                            for (Recursos recursos : listaRecursos) {
+                                if (recursos.getEstado().equalsIgnoreCase("activo")) {
+                                    
+                                    out.print("<ul>");
+                                    out.print(" <li><a href='"+path+recursos.getUrl()+"'>"+recursos.getNombreEnlace()+"</a></li>");
+                                    out.print("</ul>");
+                                }
+                            }
+                            out.print("</ul>");
+                        }
+                    %>
+                    <!--<ul class="list-unstyled">
                         <li><a href="#usuario" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Usuarios </a>
                             <ul id="usuario" class="collapse list-unstyled ">
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
                             </ul>
                         </li>
                         <li><a href="#proyecto" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Proyectos</a>
                             <ul id="proyecto" class="collapse list-unstyled ">
                                 <li><a href="registrarProyecto.jsp">Nuevo Proyecto</a></li>
-                                <li><a href="#">Page</a></li>
-                                <li><a href="#">Page</a></li>
                             </ul>
                         </li>
                         <li><a href="#manobra" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Mano de Obra</a>
@@ -124,14 +136,7 @@
                                 <li><a href="reporteCotizaacion">Reporte Cotizacion</a></li>
                             </ul>
                         </li>
-                        <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page </a></li>
-                    </ul><span class="heading">CONFIGURACIONES</span>
-                    <ul class="list-unstyled">
-                        <li> <a href="#"> <i class="icon-flask"></i>Demo </a></li>
-                        <li> <a href="#"> <i class="icon-screen"></i>Demo </a></li>
-                        <li> <a href="#"> <i class="icon-mail"></i>Demo </a></li>
-                        <li> <a href="#"> <i class="icon-picture"></i>Demo </a></li>
-                    </ul>
+                    </ul>-->
                 </nav>
                 <div class="content-inner">
                     <!-- Page Header-->

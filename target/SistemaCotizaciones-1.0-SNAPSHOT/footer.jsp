@@ -1,12 +1,3 @@
-<%-- 
-    Document   : footer
-    Created on : Jun 15, 2021, 12:35:52 AM
-    Author     : Usuario
---%>
-
-
-
-
 <!-- Page Footer-->
 <footer class="main-footer">
     <div class="container-fluid">
